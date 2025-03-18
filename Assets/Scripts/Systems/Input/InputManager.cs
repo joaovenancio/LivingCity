@@ -146,7 +146,6 @@ public class InputManager : MonoBehaviour
 	/// </summary>
 	private void OnPointerTapPerformed(InputAction.CallbackContext context)
 	{
-		//Vector2 pointerLocation = context.ReadValue<Vector2>();
 		_onPointerTap.Invoke(_pointerPosition);
 
 		#if UNITY_EDITOR
