@@ -7635,7 +7635,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.01, y: 6.225, z: -28.99}
+  m_LocalPosition: {x: 14, y: 6.225, z: -29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22782,7 +22782,7 @@ Transform:
   m_GameObject: {fileID: 843674845}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.01, y: 6.225, z: -28.99}
+  m_LocalPosition: {x: 14, y: 6.225, z: -29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -36624,6 +36624,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1412960808}
+  - component: {fileID: 1412960810}
+  - component: {fileID: 1412960809}
   m_Layer: 0
   m_Name: PlayerInputManager
   m_TagString: Untagged
@@ -36646,6 +36648,59 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1412960809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1412960807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 0caf07ceed224fe4e930f92ea653dcf5, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &1412960810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1412960807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b04d79d13916f84baebf2487418164f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerInput: {fileID: 1412960809}
+  _logDebug: 1
+  _onPointerTap:
+    m_PersistentCalls:
+      m_Calls: []
+  _onPointerPressAndDrag:
+    m_PersistentCalls:
+      m_Calls: []
+  _onPointerPositionChange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1421700828
 GameObject:
   m_ObjectHideFlags: 0
@@ -58948,7 +59003,7 @@ Transform:
   m_GameObject: {fileID: 1007594421865256979}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.01, y: -0.27499998, z: 15.01}
+  m_LocalPosition: {x: 14, y: -0.27499998, z: 15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
