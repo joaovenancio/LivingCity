@@ -1,3 +1,4 @@
+//Copyright(C) 2025 João Vítor Demaria Venâncio under GNU AGPL. Refer to README.md for more informations.
 using System;
 using UnityEngine;
 using UnityEngine.Events;
