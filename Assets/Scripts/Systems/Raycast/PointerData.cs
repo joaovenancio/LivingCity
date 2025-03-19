@@ -1,4 +1,4 @@
-//Copyright(C) 2025 João Vítor Demaria Venâncio under GNU AGPL. Refer to README.md for more informations.
+//Copyright(C) 2025 João Vítor Demaria Venâncio under GNU AGPL. Refer to README.md for more information.
 using UnityEngine;
 
 public class PointerData
