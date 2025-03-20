@@ -22697,6 +22697,8 @@ GameObject:
   - component: {fileID: 843674848}
   - component: {fileID: 843674847}
   - component: {fileID: 843674846}
+  - component: {fileID: 843674849}
+  - component: {fileID: 843674850}
   m_Layer: 0
   m_Name: LookAtWorldCamera
   m_TagString: Untagged
@@ -22781,13 +22783,39 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 843674845}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 14, y: 6.225, z: -29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.03, y: 0, z: 0}
+--- !u!114 &843674849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843674845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8e750ca984693a448a249ebad742f76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 481992247928275625}
+  _sensitivity: 25
+--- !u!114 &843674850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843674845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c51a96b148501be46ae01cb980af3896, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &844663931
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28950,6 +28978,86 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 481992247331804274, guid: f0f64c42eae5fda4eb373c9ecc78abf2, type: 3}
   m_PrefabInstance: {fileID: 1088484581}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1094079812
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1094079813}
+  - component: {fileID: 1094079814}
+  m_Layer: 0
+  m_Name: Input Events
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1094079813
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1094079812}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1944405759}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1094079814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1094079812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d8856462b7b8a54fa16e04ec8d7caed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onDragNothing:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 843674849}
+        m_TargetAssemblyTypeName: MoveCameraAroundTarget, Assembly-CSharp
+        m_MethodName: OnDragNothing
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onPointerDragEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 843674849}
+        m_TargetAssemblyTypeName: MoveCameraAroundTarget, Assembly-CSharp
+        m_MethodName: OnPointerDragEnd
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onPointerMove:
+    m_PersistentCalls:
+      m_Calls: []
+  _onPointerDirectionChange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1094667059
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36057,6 +36165,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 481992247331804274, guid: f0f64c42eae5fda4eb373c9ecc78abf2, type: 3}
   m_PrefabInstance: {fileID: 1394163960}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1400166537
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1400166538}
+  - component: {fileID: 1400166539}
+  m_Layer: 0
+  m_Name: GlobalRaycast
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1400166538
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400166537}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1400166539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400166537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a3ee9c8349343d43b182f194db8f2e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainCamera: {fileID: 330585545}
 --- !u!1001 &1400897505
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36691,16 +36844,67 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerInput: {fileID: 1412960809}
-  _logDebug: 1
+  _logDebug: 0
   _onPointerTap:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1400166539}
+        m_TargetAssemblyTypeName: ScreenRaycast, Assembly-CSharp
+        m_MethodName: OnPointerTap
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _onPointerPressAndDrag:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1400166539}
+        m_TargetAssemblyTypeName: ScreenRaycast, Assembly-CSharp
+        m_MethodName: OnPointerPressAndDrag
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _onPointerPositionChange:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1094079814}
+        m_TargetAssemblyTypeName: InputEvents, Assembly-CSharp
+        m_MethodName: UpdatePointerPositionChange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onPointerDirection:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1094079814}
+        m_TargetAssemblyTypeName: InputEvents, Assembly-CSharp
+        m_MethodName: UpdatePointerDirectionChange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1421700828
 GameObject:
   m_ObjectHideFlags: 0
@@ -52554,6 +52758,53 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 481992247331804274, guid: f0f64c42eae5fda4eb373c9ecc78abf2, type: 3}
   m_PrefabInstance: {fileID: 1941709865}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1944405757
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1944405759}
+  - component: {fileID: 1944405758}
+  m_Layer: 0
+  m_Name: EventManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1944405758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944405757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7343ef48db3c05e48814c4954118d918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dontDestroyOnLoad: 0
+  _inputEvents: {fileID: 1094079814}
+--- !u!4 &1944405759
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944405757}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1094079813}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1945748054
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -59104,3 +59355,5 @@ SceneRoots:
   - {fileID: 2029189253}
   - {fileID: 728521357}
   - {fileID: 1412960808}
+  - {fileID: 1944405759}
+  - {fileID: 1400166538}
