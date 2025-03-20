@@ -5,7 +5,7 @@ using UnityEngine.Events;
 [DefaultExecutionOrder(-10)]
 public class EventsManager : Singleton<EventsManager>
 {
-
+	[Header("Optional Reference")]
 	[SerializeField] private InputEvents _inputEvents;
 
 	public InputEvents InputEvents { get => _inputEvents; }
@@ -18,13 +18,27 @@ public class EventsManager : Singleton<EventsManager>
 		SetupFields();
 	}
 
+
+
 	private void SetupFields()
 	{
-		if (_inputEvents == null)
-		{
-			GameObject inputEventsGameObject = new GameObject("InputEvents");
-			inputEventsGameObject.transform.SetParent(this.transform);
-			inputEventsGameObject.AddComponent<InputEvents>();
-		}
+		ConfigureIntupEvents();
+	}
+
+	private void ConfigureIntupEvents()
+	{
+		if (_inputEvents) return;
+
+		_inputEvents = this.GetComponent<InputEvents>();
+
+		if (_inputEvents) return;
+
+		_inputEvents = this.GetComponentInChildren<InputEvents>();
+
+		if (_inputEvents) return;
+
+		GameObject inputEventsGameObject = new GameObject("InputEvents");
+		inputEventsGameObject.transform.SetParent(this.transform);
+		_inputEvents = inputEventsGameObject.AddComponent<InputEvents>();
 	}
 }
