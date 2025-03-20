@@ -1,3 +1,4 @@
+//Copyright(C) 2025 João Vítor Demaria Venâncio under GNU AGPL. Refer to README.md for more information.
 using UnityEngine;
 
 public class ScreenRaycast : MonoBehaviour
@@ -27,10 +28,9 @@ public class ScreenRaycast : MonoBehaviour
 	public void OnPointerTap(Vector2 pointerPosition)
 	{
 		Vector3 worldPoint = Vector3.zero;
-		IRaycastable raycastable = Raycast(pointerPosition, ref worldPoint);
+		RaycastResult raycastResult = Raycast(pointerPosition, ref worldPoint);
 
-		if (raycastable == null) return; //Event!!!
-		else raycastable.OnTap(worldPoint);
+		if (raycastResult.HitType == HitType.IRaycastable) raycastResult.Raycastable.OnTap(worldPoint);
 	}
 
 
@@ -41,9 +41,18 @@ public class ScreenRaycast : MonoBehaviour
 		switch (dragState)
 		{
 			case PointerDragState.Started:
-				IRaycastable raycastable = Raycast(pointerPosition, ref worldPoint);
+				RaycastResult raycastResult = Raycast(pointerPosition, ref worldPoint);
 
-				if (raycastable == null) return;
+				if (raycastResult.HitType == HitType.Nothing)
+				{
+					EventsManager.Instance.InputEvents.OnDragNothing.Invoke(worldPoint, timeOfEventTrigger);
+					return;
+				}
+
+				if (raycastResult.HitType == HitType.Something) return;
+
+				IRaycastable raycastable = raycastResult.Raycastable;
+
 				if (!raycastable.IsDraggable) return;
 
 				_raycastableBeingDragged = raycastable;
@@ -53,6 +62,8 @@ public class ScreenRaycast : MonoBehaviour
 
 				break;
 			case PointerDragState.Ended:
+
+				EventsManager.Instance.InputEvents.OnPointerDragEnd.Invoke(timeOfEventTrigger);
 
 				if (_raycastableBeingDragged == null) return;
 
@@ -71,7 +82,7 @@ public class ScreenRaycast : MonoBehaviour
 	}
 
 	#region Auxiliary Methods
-	public IRaycastable Raycast(Vector2 pointerPosition, ref Vector3 worldPoint)
+	public RaycastResult Raycast(Vector2 pointerPosition, ref Vector3 worldPoint)
 	{
 		worldPoint = MainCamera.ScreenToWorldPoint(pointerPosition);
 
@@ -80,16 +91,33 @@ public class ScreenRaycast : MonoBehaviour
 		if (!Physics.Raycast(worldPoint,
 			Vector3.zero,
 			out hit,
-			Mathf.Infinity))
-		{
-			return null; //Event;
-		}
+			Mathf.Infinity)) return new RaycastResult(HitType.Nothing, null);
+			//EventsManager.Instance.InputEvents.OnDragNothing.Invoke(worldPoint);
 			
 
 		IRaycastable raycastable = hit.collider.GetComponent<IRaycastable>();
 
-		if (raycastable == null) return null;
-		else return raycastable;
+		if (raycastable == null) return new RaycastResult(HitType.Something, null);
+		else return new RaycastResult(HitType.IRaycastable, raycastable);
 	}
 	#endregion
+}
+
+public struct RaycastResult
+{
+	public IRaycastable Raycastable;
+	public HitType HitType;
+
+	public RaycastResult(HitType hitType, IRaycastable raycastable)
+	{
+		HitType = hitType;
+		Raycastable = raycastable;
+	}
+}
+
+public enum HitType
+{
+	Nothing,
+	Something,
+	IRaycastable,
 }
