@@ -19,6 +19,7 @@ public class InputManager : MonoBehaviour
 	private InputAction _pointerPressAndDragAction;
 	private InputAction _pointerTapAction;
 	private InputAction _pointerPositionAction;
+	private InputAction _onPointerDirectionAction;
 	private Vector2 _pointerPosition = Vector2.zero;
 
 
@@ -32,6 +33,9 @@ public class InputManager : MonoBehaviour
 	[Space]
 	[SerializeField] private UnityEvent<Vector2> _onPointerPositionChange;
 	public UnityEvent<Vector2> OnPointerPositionChange { get => _onPointerPositionChange; }
+	[Space]
+	[SerializeField] private UnityEvent<Vector2> _onPointerDirection;
+	public UnityEvent<Vector2> OnPointerDirection { get => _onPointerDirection; }
 
 
 
@@ -46,6 +50,7 @@ public class InputManager : MonoBehaviour
 		if (_onPointerTap == null) _onPointerTap = new UnityEvent<Vector2>();
 		if (_onPointerPressAndDrag == null) _onPointerPressAndDrag = new UnityEvent<PointerDragState, Vector2, float>();
 		if (_onPointerPositionChange == null) _onPointerPositionChange = new UnityEvent<Vector2>();
+		if (_onPointerDirection == null) _onPointerDirection = new UnityEvent<Vector2>();
 	}
 
 	private void OnEnable()
@@ -68,6 +73,7 @@ public class InputManager : MonoBehaviour
 		_pointerPressAndDragAction = _playerInput.actions["PointerPressAndDrag"];
 		_pointerTapAction = _playerInput.actions["PointerTap"];
 		_pointerPositionAction = _playerInput.actions["PointerPosition"];
+		_onPointerDirectionAction = _playerInput.actions["PointerMovementDirection"];
 	}
 
 	private void EnableEvents()
@@ -78,6 +84,8 @@ public class InputManager : MonoBehaviour
 		_pointerTapAction.performed += OnPointerTapPerformed;
 
 		_pointerPositionAction.performed += OnPointerPositionPerformed;
+
+		_onPointerDirectionAction.performed += OnPointerDirectionPerformed;
 	}
 
 	
@@ -89,6 +97,8 @@ public class InputManager : MonoBehaviour
 		_pointerTapAction.performed -= OnPointerTapPerformed;
 
 		_pointerPositionAction.performed -= OnPointerPositionPerformed;
+
+		_onPointerDirectionAction.performed -= OnPointerDirectionPerformed;
 	}
 
 	/// <summary>
@@ -153,6 +163,16 @@ public class InputManager : MonoBehaviour
 		if (_logDebug) Debug.Log("Input Manager -> Pointer Tap -> Performed at: " + _pointerPosition, this);
 		#endif
 	}
+
+	private void OnPointerDirectionPerformed (InputAction.CallbackContext context)
+	{
+		_onPointerDirection.Invoke(context.ReadValue<Vector2>());
+
+		#if UNITY_EDITOR
+		if (_logDebug) Debug.Log("Input Manager -> Pointer Tap -> Performed at: " + _pointerPosition, this);
+		#endif
+	}
+
 }
 
 public enum PointerDragState

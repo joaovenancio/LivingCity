@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+[DefaultExecutionOrder(-10)]
 public class InputEvents : MonoBehaviour
 {
 	[Header("Public Events")]
@@ -11,6 +12,8 @@ public class InputEvents : MonoBehaviour
 	[SerializeField] private UnityEvent<float> _onPointerDragEnd;
 	[Space]
 	[SerializeField] private UnityEvent<Vector2> _onPointerMove;
+	[Space]
+	[SerializeField] private UnityEvent<Vector2> _onPointerDirectionChange;
 
 	/// <summary>
 	/// Event triggered when a drag action occurs without any specific target.
@@ -30,6 +33,8 @@ public class InputEvents : MonoBehaviour
 	/// The Vector2 parameter represents the new position of the pointer.
 	/// </remarks>
 	public UnityEvent<Vector2> OnPointerMove { get => _onPointerMove; }
+
+	public UnityEvent<Vector2> OnPointerDirectionChange { get => _onPointerDirectionChange; }
 	
 
 
@@ -44,11 +49,18 @@ public class InputEvents : MonoBehaviour
 	private void SetupFields()
 	{
 		if (_onDragNothing == null) _onDragNothing = new UnityEvent<Vector2, float>();
+		if (_onPointerDragEnd == null) _onPointerDragEnd = new UnityEvent<float>();
 		if (_onPointerMove == null) _onPointerMove = new UnityEvent<Vector2>();
+		if (_onPointerDirectionChange == null) _onPointerDirectionChange = new UnityEvent<Vector2>();
 	}
 
-	public void OnPointerPositionChange(Vector2 pointerPosition)
+	public void UpdatePointerPositionChange(Vector2 pointerPosition)
 	{
 		OnPointerMove.Invoke(pointerPosition);
+	}
+
+	public void UpdatePointerDirectionChange(Vector2 pointerDirection)
+	{
+		OnPointerDirectionChange.Invoke(pointerDirection);
 	}
 }
