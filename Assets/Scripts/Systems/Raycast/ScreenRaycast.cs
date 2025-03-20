@@ -9,6 +9,9 @@ public class ScreenRaycast : MonoBehaviour
 	private IRaycastable _raycastableBeingDragged = null;
 	private PointerData _pointer;
 
+	[Header("Variables")]
+	public bool IsRaycasting = true;
+
 	public PointerData Pointer { get => _pointer; }
 
 
@@ -27,6 +30,8 @@ public class ScreenRaycast : MonoBehaviour
 
 	public void OnPointerTap(Vector2 pointerPosition)
 	{
+		if (!IsRaycasting) return;
+
 		Vector3 worldPoint = Vector3.zero;
 		RaycastResult raycastResult = Raycast(pointerPosition, ref worldPoint);
 
@@ -36,6 +41,8 @@ public class ScreenRaycast : MonoBehaviour
 
 	public void OnPointerPressAndDrag(PointerDragState dragState, Vector2 pointerPosition, float timeOfEventTrigger)
 	{
+		if (!IsRaycasting) return;
+
 		Vector3 worldPoint = Vector3.zero;
 
 		switch (dragState)
