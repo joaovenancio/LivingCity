@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class ButtonUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
 	[Header("Optional Reference")]
-	[Tooltip("If not manually set, is needed to manually assign this class InputEvents functions to a GameObject with a InputEvents")]
+	[Tooltip("If not manually set, is needed to manually assign this class InputEvents functions to a InputEvents GameObject.")]
 	[SerializeField] private InputEvents _inputEvents;
 	[Header("Events")]
 	[Space]
@@ -38,12 +38,14 @@ public class ButtonUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 	{
 		_inputEvents?.OnPointerDragStart.AddListener(OnPointerDragStart);
 		_inputEvents?.OnPointerDragEnd.AddListener(OnPointerDragEnd);
+		_inputEvents?.OnPointerSingleTap.AddListener(OnPointerSingleTap);
 	}
 
 	private void OnDisable()
 	{
 		_inputEvents?.OnPointerDragStart.RemoveListener(OnPointerDragStart);
 		_inputEvents?.OnPointerDragEnd.RemoveListener(OnPointerDragEnd);
+		_inputEvents?.OnPointerSingleTap.RemoveListener(OnPointerSingleTap);
 	}
 
 	private void Awake()
@@ -79,6 +81,12 @@ public class ButtonUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 		_onDragEnd.Invoke();
 	}
 
+	private void OnPointerSingleTap(Vector2 screenPosition)
+	{
+		if (!IsInteractable) return;
+		if (!_isPointerOver) return;
+		_onClick.Invoke();
+	}
 
 	#endregion
 
