@@ -1,7 +1,7 @@
 //Copyright(C) 2025 João Vítor Demaria Venâncio under GNU AGPL. Refer to README.md for more information.
 using UnityEngine;
 
-public class ScreenRaycast : Singleton<ScreenRaycast>//Singleton
+public class ScreenRaycast : Singleton<ScreenRaycast>
 {
 	[Header("References")]
 	[SerializeField] private Camera MainCamera;
@@ -71,15 +71,15 @@ public class ScreenRaycast : Singleton<ScreenRaycast>//Singleton
 				break;
 			case PointerDragState.Ended:
 
-				EndPointerDrag(timeOfEventTrigger);
+				EndPointerDrag();
 
 				break;
 		}
 	}
 
-	private void EndPointerDrag(float timeOfEventTrigger)
+	private void EndPointerDrag()
 	{
-		EventsManager.Instance.InputEvents.OnPointerDragEnd.Invoke(timeOfEventTrigger);
+		//EventsManager.Instance.InputEvents.OnPointerDragEnd.Invoke(timeOfEventTrigger);
 
 		if (_raycastableBeingDragged == null) return;
 
@@ -95,7 +95,8 @@ public class ScreenRaycast : Singleton<ScreenRaycast>//Singleton
 		{
 			case HoverMotionType.Enter:
 				IsEmittingEvents = false;
-				EndPointerDrag(0f);
+				EventsManager.Instance?.InputEvents?.OnPointerDragEnd?.Invoke(0f);
+				EndPointerDrag();
 				break;
 
 			case HoverMotionType.Exit:
