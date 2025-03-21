@@ -18,7 +18,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
 
 	private void Awake()
 	{
-		SingletonSetup();
+		SetupSingleton();
 	}
 
 
@@ -26,7 +26,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
 	/// <summary>
 	/// Sets up the Singleton instance. Destroys the object if an instance already exists.
 	/// </summary>
-	protected void SingletonSetup()
+	protected void SetupSingleton()
 	{
 		if (Instance != null && Instance != this)
 		{

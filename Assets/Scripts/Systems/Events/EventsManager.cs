@@ -14,7 +14,7 @@ public class EventsManager : Singleton<EventsManager>
 
 	private void Awake()
 	{
-		SingletonSetup();
+		SetupSingleton();
 		SetupFields();
 	}
 
