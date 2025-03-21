@@ -18,7 +18,6 @@ public class ButtonUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 	[SerializeField] private UnityEvent _onDragEnd;
 	private bool _isPointerOver = false;
 
-
 	public bool IsInteractable = true;
 	/// <summary>
 	/// Event triggered when the button is clicked.
@@ -34,6 +33,7 @@ public class ButtonUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 	public UnityEvent OnDragEnd { get => _onDragEnd; }
 
 
+
 	private void OnEnable()
 	{
 		_inputEvents?.OnPointerDragStart.AddListener(OnPointerDragStart);
@@ -46,10 +46,20 @@ public class ButtonUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 		_inputEvents?.OnPointerDragEnd.RemoveListener(OnPointerDragEnd);
 	}
 
-
 	private void Awake()
 	{
 		SetupFields();
+	}
+
+
+
+	private void SetupFields()
+	{
+		if (!_inputEvents) _inputEvents = EventsManager.Instance.InputEvents;
+
+		if (_onClick == null) _onClick = new UnityEvent();
+		if (_onDragStart == null) _onDragStart = new UnityEvent();
+		if (_onDragEnd == null) _onDragEnd = new UnityEvent();
 	}
 
 	#region InputEvents
@@ -68,21 +78,9 @@ public class ButtonUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
 		_onDragEnd.Invoke();
 	}
+
+
 	#endregion
-
-
-
-	/// <summary>
-	/// Sets up the fields for the ButtonUI component.
-	/// </summary>
-	private void SetupFields()
-	{
-		if (!_inputEvents) _inputEvents = EventsManager.Instance.InputEvents;
-
-		if (_onClick == null) _onClick = new UnityEvent();
-		if (_onDragStart == null) _onDragStart = new UnityEvent();
-		if (_onDragEnd == null) _onDragEnd = new UnityEvent();
-	}
 
 	#region Interfaces
 	public void OnPointerEnter(PointerEventData eventData)
