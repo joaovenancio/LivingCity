@@ -1,7 +1,7 @@
 //Copyright(C) 2025 João Vítor Demaria Venâncio under GNU AGPL. Refer to README.md for more information.
 using UnityEngine;
 
-public class ScreenRaycast : MonoBehaviour
+public class ScreenRaycast : Singleton<ScreenRaycast>//Singleton
 {
 	[Header("References")]
 	[SerializeField] private Camera MainCamera;
@@ -18,6 +18,7 @@ public class ScreenRaycast : MonoBehaviour
 
 	private void Awake()
 	{
+		SetupSingleton();
 		SetupFields();
 	}
 	
