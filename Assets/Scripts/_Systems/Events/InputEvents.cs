@@ -13,6 +13,8 @@ public class InputEvents : MonoBehaviour
 	[Space]
 	[SerializeField] private UnityEvent<float> _onPointerDragEnd;
 	[Space]
+	[SerializeField] private UnityEvent<Vector2> _onPointerSingleTap;
+	[Space]
 	[SerializeField] private UnityEvent<Vector2> _onPointerMove;
 	[Space]
 	[SerializeField] private UnityEvent<Vector2> _onPointerDirectionChange;
@@ -38,6 +40,13 @@ public class InputEvents : MonoBehaviour
 	/// Event triggered when the pointer drag action ends.
 	/// </summary>
 	public UnityEvent<float> OnPointerDragEnd { get => _onPointerDragEnd; }
+	/// <summary>
+	/// Event triggered when the pointer is tapped.
+	/// </summary>
+	/// <remarks>
+	/// The Vector2 parameter represents the screen position of the pointer when the tap occurs.
+	/// </remarks>
+	public UnityEvent<Vector2> OnPointerSingleTap { get => _onPointerSingleTap; }
 	/// <summary>
 	/// Event triggered when the pointer moves.
 	/// </summary>
@@ -75,6 +84,7 @@ public class InputEvents : MonoBehaviour
 		if (_onDragNothing == null) _onDragNothing = new UnityEvent<Vector2, float>();
 		if (_onPointerDragStart == null) _onPointerDragStart = new UnityEvent<Vector2, float>();
 		if (_onPointerDragEnd == null) _onPointerDragEnd = new UnityEvent<float>();
+		if (_onPointerSingleTap == null) _onPointerSingleTap = new UnityEvent<Vector2>();
 		if (_onPointerMove == null) _onPointerMove = new UnityEvent<Vector2>();
 		if (_onPointerDirectionChange == null) _onPointerDirectionChange = new UnityEvent<Vector2>();
 		if (_onPointerHoverUI == null) _onPointerHoverUI = new UnityEvent<RectTransform, HoverMotionType>();
@@ -103,6 +113,11 @@ public class InputEvents : MonoBehaviour
 				OnPointerDragEnd.Invoke(timestamp);
 				break;
 		}
+	}
+
+	public void OnPointerTap (Vector2 screenPosition)
+	{
+		OnPointerSingleTap.Invoke(screenPosition);
 	}
 	#endregion
 }
