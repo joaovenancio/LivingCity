@@ -16,6 +16,9 @@ public class InputEvents : MonoBehaviour
 	[SerializeField] private UnityEvent<Vector2> _onPointerDirectionChange;
 	[Space]
 	[SerializeField] private UnityEvent<RectTransform, HoverMotionType> _onPointerHoverUI;
+	[Space]
+	[SerializeField] private UnityEvent<Vector2, float> _onPointerDragStart;
+
 
 	/// <summary>
 	/// Event triggered when a drag action occurs without any specific target.
@@ -39,6 +42,8 @@ public class InputEvents : MonoBehaviour
 	public UnityEvent<Vector2> OnPointerDirectionChange { get => _onPointerDirectionChange; }
 
 	public UnityEvent<RectTransform, HoverMotionType> OnPointerHoverUI { get => _onPointerHoverUI; }
+
+	public UnityEvent<Vector2, float> OnPointerDragStart { get => _onPointerDragStart; }
 
 
 	private void Awake()
@@ -64,6 +69,20 @@ public class InputEvents : MonoBehaviour
 	public void UpdatePointerDirectionChange(Vector2 pointerDirection)
 	{
 		OnPointerDirectionChange.Invoke(pointerDirection);
+	}
+
+	public void OnPointerPressAndDrag(PointerDragState dragState, Vector2 pointerStartingLocation, float timestamp)
+	{
+		switch(dragState)
+		{
+			case PointerDragState.Started:
+				OnPointerDragStart.Invoke(pointerStartingLocation, timestamp);
+				break;
+
+			case PointerDragState.Ended:
+				OnPointerDragEnd.Invoke(timestamp);
+				break;
+		}
 	}
 }
 
