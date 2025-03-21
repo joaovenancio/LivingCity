@@ -14,6 +14,8 @@ public class InputEvents : MonoBehaviour
 	[SerializeField] private UnityEvent<Vector2> _onPointerMove;
 	[Space]
 	[SerializeField] private UnityEvent<Vector2> _onPointerDirectionChange;
+	[Space]
+	[SerializeField] private UnityEvent<RectTransform, HoverMotionType> _onPointerHover;
 
 	/// <summary>
 	/// Event triggered when a drag action occurs without any specific target.
@@ -35,8 +37,8 @@ public class InputEvents : MonoBehaviour
 	public UnityEvent<Vector2> OnPointerMove { get => _onPointerMove; }
 
 	public UnityEvent<Vector2> OnPointerDirectionChange { get => _onPointerDirectionChange; }
-	
 
+	public UnityEvent<RectTransform, HoverMotionType> OnPointerHover { get => _onPointerHover; }
 
 
 	private void Awake()
@@ -63,4 +65,10 @@ public class InputEvents : MonoBehaviour
 	{
 		OnPointerDirectionChange.Invoke(pointerDirection);
 	}
+}
+
+public enum HoverMotionType
+{
+	Enter,
+	Exit
 }
