@@ -18,4 +18,9 @@ public class Test : MonoBehaviour
     {
         Debug.Log(pointerPosition);
     }
+
+    public void TestMe()
+    {
+        Debug.Log("Test");
+	}
 }
