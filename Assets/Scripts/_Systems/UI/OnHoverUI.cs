@@ -8,6 +8,7 @@ public class OnHoverUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 {
 	[Header("Optional Reference")]
 	[SerializeField] private RectTransform _rectTransform;
+	[SerializeField] private InputEvents _inputEvents;
 	[Header("Events")]
 	[SerializeField] private UnityEvent<RectTransform> _onEnter;
 	[SerializeField] private UnityEvent<RectTransform> _onExit;
@@ -29,6 +30,8 @@ public class OnHoverUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 		if (!_rectTransform) _rectTransform = this.GetComponent<RectTransform>();
 		if (!_rectTransform) _rectTransform = this.GetComponentInChildren<RectTransform>();
 		if (!_rectTransform) Debug.LogWarning("No RectTransform found in " + this.gameObject.name + " or its children.");
+
+		if (!_inputEvents) _inputEvents = EventsManager.Instance.InputEvents;
 	}
 
 
@@ -37,11 +40,13 @@ public class OnHoverUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 	public void OnPointerEnter(PointerEventData eventData)
 	{
 		OnEnter.Invoke(_rectTransform);
+		_inputEvents?.OnPointerHoverUI.Invoke(_rectTransform, HoverMotionType.Enter);
 	}
 
 	public void OnPointerExit(PointerEventData eventData)
 	{
 		OnExit.Invoke(_rectTransform);
+		_inputEvents?.OnPointerHoverUI.Invoke(_rectTransform, HoverMotionType.Exit);
 	}
 	#endregion
 }

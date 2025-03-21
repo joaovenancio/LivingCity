@@ -10187,6 +10187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rectTransform: {fileID: 370361196}
+  _inputEvents: {fileID: 0}
   _onEnter:
     m_PersistentCalls:
       m_Calls:
@@ -15715,19 +15716,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 553665475}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayBooleanAnimationOnHover, Assembly-CSharp
-        m_MethodName: PlayExit
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &553665475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31138,9 +31127,21 @@ MonoBehaviour:
   _onPointerDirectionChange:
     m_PersistentCalls:
       m_Calls: []
-  _onPointerHover:
+  _onPointerHoverUI:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1400166539}
+        m_TargetAssemblyTypeName: ScreenRaycast, Assembly-CSharp
+        m_MethodName: OnPointerHoverUI
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1094667059
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38687,7 +38688,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dontDestroyOnLoad: 0
   MainCamera: {fileID: 330585545}
-  IsRaycasting: 1
+  IsEmittingEvents: 1
 --- !u!1001 &1400897505
 PrefabInstance:
   m_ObjectHideFlags: 0

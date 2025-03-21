@@ -10,7 +10,7 @@ public class ScreenRaycast : Singleton<ScreenRaycast>//Singleton
 	private PointerData _pointer;
 
 	[Header("Variables")]
-	public bool IsRaycasting = true;
+	public bool IsEmittingEvents = true;
 
 	public PointerData Pointer { get => _pointer; }
 
@@ -31,7 +31,7 @@ public class ScreenRaycast : Singleton<ScreenRaycast>//Singleton
 
 	public void OnPointerTap(Vector2 pointerPosition)
 	{
-		if (!IsRaycasting) return;
+		if (!IsEmittingEvents) return;
 
 		Vector3 worldPoint = Vector3.zero;
 		RaycastResult raycastResult = Raycast(pointerPosition, ref worldPoint);
@@ -42,7 +42,7 @@ public class ScreenRaycast : Singleton<ScreenRaycast>//Singleton
 
 	public void OnPointerPressAndDrag(PointerDragState dragState, Vector2 pointerPosition, float timeOfEventTrigger)
 	{
-		if (!IsRaycasting) return;
+		if (!IsEmittingEvents) return;
 
 		Vector3 worldPoint = Vector3.zero;
 
@@ -71,14 +71,35 @@ public class ScreenRaycast : Singleton<ScreenRaycast>//Singleton
 				break;
 			case PointerDragState.Ended:
 
-				EventsManager.Instance.InputEvents.OnPointerDragEnd.Invoke(timeOfEventTrigger);
+				EndPointerDrag(timeOfEventTrigger);
 
-				if (_raycastableBeingDragged == null) return;
+				break;
+		}
+	}
 
-				_raycastableBeingDragged.PointerData = null;
-				_raycastableBeingDragged.OnStopDrag();
-				_raycastableBeingDragged = null;
+	private void EndPointerDrag(float timeOfEventTrigger)
+	{
+		EventsManager.Instance.InputEvents.OnPointerDragEnd.Invoke(timeOfEventTrigger);
 
+		if (_raycastableBeingDragged == null) return;
+
+		_raycastableBeingDragged.PointerData = null;
+		_raycastableBeingDragged.OnStopDrag();
+		_raycastableBeingDragged = null;
+	}
+
+
+	public void OnPointerHoverUI(RectTransform sender, HoverMotionType type)
+	{
+		switch (type)
+		{
+			case HoverMotionType.Enter:
+				IsEmittingEvents = false;
+				EndPointerDrag(0f);
+				break;
+
+			case HoverMotionType.Exit:
+				IsEmittingEvents = true;
 				break;
 		}
 	}
