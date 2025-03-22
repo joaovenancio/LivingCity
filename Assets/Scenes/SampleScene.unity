@@ -15645,6 +15645,8 @@ GameObject:
   - component: {fileID: 553665476}
   - component: {fileID: 553665475}
   - component: {fileID: 553665477}
+  - component: {fileID: 553665480}
+  - component: {fileID: 553665479}
   - component: {fileID: 553665478}
   m_Layer: 5
   m_Name: Button
@@ -15729,10 +15731,46 @@ MonoBehaviour:
       m_Calls: []
   _onDragStart:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 553665480}
+        m_TargetAssemblyTypeName: ObjectSpawnButton, Assembly-CSharp
+        m_MethodName: OnDrag
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 370361201}
+        m_TargetAssemblyTypeName: PlayBooleanAnimation, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _onDragEnd:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 553665480}
+        m_TargetAssemblyTypeName: ObjectSpawnButton, Assembly-CSharp
+        m_MethodName: OnDragEnd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   IsInteractable: 1
 --- !u!114 &553665478
 MonoBehaviour:
@@ -15746,6 +15784,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c51a96b148501be46ae01cb980af3896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &553665479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553665472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce45f4accc82b4a49aaa4dc642ed564a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 553665473}
+  PositionToFollow: {x: 0, y: 0}
+  IsFollowing: 0
+  Speed: 150
+--- !u!114 &553665480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553665472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b54d8706ae096ca4cba47f73957d8dff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rectFollowPosition: {fileID: 553665479}
+  _inputEvents: {fileID: 1094079814}
 --- !u!1001 &555138412
 PrefabInstance:
   m_ObjectHideFlags: 0
