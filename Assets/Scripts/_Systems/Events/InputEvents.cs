@@ -5,6 +5,8 @@ using UnityEngine.Events;
 [DefaultExecutionOrder(-10)]
 public class InputEvents : MonoBehaviour
 {
+	private Vector2 _pointerPoistion = Vector2.zero;
+	private Vector2 _pointerDirection = Vector2.zero;
 	[Header("Public Events")]
 	[Space]
 	[SerializeField] private UnityEvent<Vector2, float> _onDragNothing;
@@ -21,6 +23,14 @@ public class InputEvents : MonoBehaviour
 	[Space]
 	[SerializeField] private UnityEvent<RectTransform, HoverMotionType> _onPointerHoverUI;
 
+	/// <summary>
+	/// Gets the current position of the pointer.
+	/// </summary>
+	public Vector2 PointerPosition { get => _pointerPoistion; }
+	/// <summary>
+	/// Gets the current direction of the pointer.
+	/// </summary>
+	public Vector2 PointerDirection { get => _pointerDirection; }
 	/// <summary>
 	/// Event triggered when a drag action occurs without any specific target.
 	/// </summary>
@@ -93,11 +103,13 @@ public class InputEvents : MonoBehaviour
 	#region InputManager events
 	public void UpdatePointerPositionChange(Vector2 pointerPosition)
 	{
+		_pointerPoistion = pointerPosition;
 		OnPointerMove.Invoke(pointerPosition);
 	}
 
 	public void UpdatePointerDirectionChange(Vector2 pointerDirection)
 	{
+		_pointerDirection = pointerDirection;
 		OnPointerDirectionChange.Invoke(pointerDirection);
 	}
 
