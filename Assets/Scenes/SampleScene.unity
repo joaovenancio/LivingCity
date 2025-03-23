@@ -20562,7 +20562,7 @@ GameObject:
   - component: {fileID: 691059515}
   m_Layer: 0
   m_Name: EventSystem
-  m_TagString: Untagged
+  m_TagString: System
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38707,7 +38707,7 @@ GameObject:
   - component: {fileID: 1400166539}
   m_Layer: 0
   m_Name: GlobalRaycast
-  m_TagString: Untagged
+  m_TagString: System
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39313,7 +39313,7 @@ GameObject:
   - component: {fileID: 1412960809}
   m_Layer: 0
   m_Name: PlayerInputManager
-  m_TagString: Untagged
+  m_TagString: System
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55725,7 +55725,7 @@ GameObject:
   - component: {fileID: 1944405758}
   m_Layer: 0
   m_Name: EventManager
-  m_TagString: Untagged
+  m_TagString: System
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
