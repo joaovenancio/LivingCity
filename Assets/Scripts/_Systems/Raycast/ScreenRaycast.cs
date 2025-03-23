@@ -116,19 +116,22 @@ public class ScreenRaycast : Singleton<ScreenRaycast>
 	{
 		worldPoint = MainCamera.ScreenToWorldPoint(pointerPosition);
 
+		Ray ray = MainCamera.ScreenPointToRay(pointerPosition);
 		RaycastHit hit;
 
-		if (!Physics.Raycast(worldPoint,
-			Vector3.zero,
+		if (!Physics.Raycast(ray,
 			out hit,
-			Mathf.Infinity)) return new RaycastResult(HitType.Nothing, null);
-			//EventsManager.Instance.InputEvents.OnDragNothing.Invoke(worldPoint);
-			
+			Mathf.Infinity))
+		{
+			return new RaycastResult(HitType.Nothing, null, null);
+		}
+
+		worldPoint = hit.point;
 
 		IRaycastable raycastable = hit.collider.GetComponent<IRaycastable>();
 
-		if (raycastable == null) return new RaycastResult(HitType.Something, null);
-		else return new RaycastResult(HitType.IRaycastable, raycastable);
+		if (raycastable == null) return new RaycastResult(HitType.Something, null, hit.collider);
+		else return new RaycastResult(HitType.IRaycastable, raycastable, hit.collider);
 	}
 	#endregion
 }
@@ -137,11 +140,13 @@ public struct RaycastResult
 {
 	public IRaycastable Raycastable;
 	public HitType HitType;
+	public Collider Collider;
 
-	public RaycastResult(HitType hitType, IRaycastable raycastable)
+	public RaycastResult(HitType hitType, IRaycastable raycastable, Collider collider)
 	{
 		HitType = hitType;
 		Raycastable = raycastable;
+		Collider = collider;
 	}
 }
 
