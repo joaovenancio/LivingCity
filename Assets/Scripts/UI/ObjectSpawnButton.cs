@@ -6,7 +6,10 @@ public class ObjectSpawnButton : MonoBehaviour
     [Header("References")]
 	[SerializeField] private RectFollowPosition _rectFollowPosition;
     [SerializeField] private InputEvents _inputEvents;
-    private bool _isBeingDragged = false;
+	[SerializeField] private PreviewObject _previewObject;
+	[SerializeField] private ScreenRaycast _screenRaycaster;
+
+	private bool _isBeingDragged = false;
 
 
 
@@ -32,7 +35,18 @@ public class ObjectSpawnButton : MonoBehaviour
 	private void UpdateImagePosition()
     {
         if (!_isBeingDragged) return;
+
 		_rectFollowPosition.PositionToFollow = _inputEvents.PointerPosition;
+
+		Vector3 worldPoint = Vector3.zero;
+		RaycastResult rayResult = _screenRaycaster.Raycast(_inputEvents.PointerPosition, ref worldPoint);
+
+		if (rayResult.HitType.Equals(HitType.Nothing)) return;
+		if (!rayResult.Collider.tag.Equals("Ground")) return;
+
+		_previewObject.LocationToShow = worldPoint;
+
+
 	}
 
 	#region Button events
@@ -40,6 +54,7 @@ public class ObjectSpawnButton : MonoBehaviour
     {
 		_isBeingDragged = true;
 		_rectFollowPosition.IsFollowing = true;
+		_previewObject.IsPreviewing = true;
 	}
 
     public void OnDragEnd()
@@ -47,6 +62,7 @@ public class ObjectSpawnButton : MonoBehaviour
 		_isBeingDragged = false;
         _rectFollowPosition.IsFollowing = false;
 		_rectFollowPosition.ResetPosition();
+		_previewObject.IsPreviewing = false;
 	}
 	#endregion
 }
