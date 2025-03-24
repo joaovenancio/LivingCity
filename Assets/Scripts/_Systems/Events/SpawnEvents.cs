@@ -6,9 +6,9 @@ public class SpawnEvents : MonoBehaviour
 {
 	[Header("Public Events")]
 	[Space]
-	[SerializeField] private UnityEvent<GameObject, Vector3> _onSpawnObject;
+	[SerializeField] private UnityEvent<GameObject, Vector3, Transform> _onSpawnObject;
 
-	public UnityEvent<GameObject, Vector3> OnSpawnObject { get => _onSpawnObject; }
+	public UnityEvent<GameObject, Vector3, Transform> OnSpawnObject { get => _onSpawnObject; }
 
 
 	public void Awake()
@@ -29,6 +29,6 @@ public class SpawnEvents : MonoBehaviour
 
 	private void SetupFields()
 	{
-		if (_onSpawnObject == null) _onSpawnObject = new UnityEvent<GameObject, Vector3>();
+		if (_onSpawnObject == null) _onSpawnObject = new UnityEvent<GameObject, Vector3, Transform>();
 	}
 }
