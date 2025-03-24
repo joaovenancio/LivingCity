@@ -63,6 +63,15 @@ public class ObjectSpawnButton : MonoBehaviour
         _rectFollowPosition.IsFollowing = false;
 		_rectFollowPosition.ResetPosition();
 		_previewObject.IsPreviewing = false;
+
+
+		Vector3 worldPoint = Vector3.zero;
+		RaycastResult rayResult = _screenRaycaster.Raycast(_inputEvents.PointerPosition, ref worldPoint);
+
+		if (rayResult.HitType.Equals(HitType.Nothing)) return;
+		if (!rayResult.Collider.tag.Equals("Ground")) return;
+
+		EventsManager.Instance.SpawnEvents.OnSpawnObject.Invoke(_previewObject.Prefab, worldPoint);
 	}
 	#endregion
 }
