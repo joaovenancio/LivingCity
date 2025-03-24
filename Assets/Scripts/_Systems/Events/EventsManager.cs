@@ -7,8 +7,10 @@ public class EventsManager : Singleton<EventsManager>
 {
 	[Header("Optional Reference")]
 	[SerializeField] private InputEvents _inputEvents;
+	[SerializeField] private SpawnEvents _spawnEvents;
 
 	public InputEvents InputEvents { get => _inputEvents; }
+	public SpawnEvents SpawnEvents { get => _spawnEvents; }
 
 
 
@@ -22,10 +24,11 @@ public class EventsManager : Singleton<EventsManager>
 
 	private void SetupFields()
 	{
-		ConfigureIntupEvents();
+		ConfigureInputEvents();
+		ConfigureSpawnEvents();
 	}
 
-	private void ConfigureIntupEvents()
+	private void ConfigureInputEvents()
 	{
 		if (_inputEvents) return;
 
@@ -37,8 +40,25 @@ public class EventsManager : Singleton<EventsManager>
 
 		if (_inputEvents) return;
 
-		GameObject inputEventsGameObject = new GameObject("InputEvents");
+		GameObject inputEventsGameObject = new GameObject("Input Events");
 		inputEventsGameObject.transform.SetParent(this.transform);
 		_inputEvents = inputEventsGameObject.AddComponent<InputEvents>();
+	}
+
+	private void ConfigureSpawnEvents()
+	{
+		if (_spawnEvents) return;
+
+		_spawnEvents = this.GetComponent<SpawnEvents>();
+
+		if (_spawnEvents) return;
+
+		_spawnEvents = this.GetComponentInChildren<SpawnEvents>();
+
+		if (_spawnEvents) return;
+
+		GameObject spawnEventsGameObject = new GameObject("Spawn Events");
+		spawnEventsGameObject.transform.SetParent(this.transform);
+		_spawnEvents = spawnEventsGameObject.AddComponent<SpawnEvents>();
 	}
 }
