@@ -95,7 +95,7 @@ public class ScreenRaycast : Singleton<ScreenRaycast>
 		{
 			case HoverMotionType.Enter:
 				IsEmittingEvents = false;
-				EventsManager.Instance?.InputEvents?.OnPointerDragEnd?.Invoke(0f);
+				//EventsManager.Instance?.InputEvents?.OnPointerDragEnd?.Invoke(0f);
 				EndPointerDrag();
 				break;
 
