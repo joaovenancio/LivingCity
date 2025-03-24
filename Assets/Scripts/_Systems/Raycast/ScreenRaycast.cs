@@ -33,8 +33,13 @@ public class ScreenRaycast : Singleton<ScreenRaycast>
 	{
 		if (!IsEmittingEvents) return;
 
+		Debug.Log("ScreenRaycast: OnPointerTap");
+
 		Vector3 worldPoint = Vector3.zero;
 		RaycastResult raycastResult = Raycast(pointerPosition, ref worldPoint);
+
+		Debug.Log(raycastResult.HitType);
+
 
 		if (raycastResult.HitType == HitType.IRaycastable) raycastResult.Raycastable.OnTap(worldPoint);
 	}
@@ -130,6 +135,8 @@ public class ScreenRaycast : Singleton<ScreenRaycast>
 
 		IRaycastable raycastable = hit.collider.GetComponent<IRaycastable>();
 
+		if (raycastable == null) raycastable = hit.collider.GetComponentInChildren<IRaycastable>();
+		if (raycastable == null) raycastable = hit.collider.GetComponentInParent<IRaycastable>();
 		if (raycastable == null) return new RaycastResult(HitType.Something, null, hit.collider);
 		else return new RaycastResult(HitType.IRaycastable, raycastable, hit.collider);
 	}
