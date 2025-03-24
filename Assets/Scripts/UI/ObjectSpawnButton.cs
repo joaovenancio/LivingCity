@@ -71,7 +71,7 @@ public class ObjectSpawnButton : MonoBehaviour
 		if (rayResult.HitType.Equals(HitType.Nothing)) return;
 		if (!rayResult.Collider.tag.Equals("Ground")) return;
 
-		EventsManager.Instance.SpawnEvents.OnSpawnObject.Invoke(_previewObject.Prefab, worldPoint);
+		EventsManager.Instance.SpawnEvents.OnSpawnObject.Invoke(_previewObject.Prefab, worldPoint, rayResult.Collider.transform);
 	}
 	#endregion
 }

@@ -33,7 +33,7 @@ public class ObjectSpawner : MonoBehaviour //TODO: Implement object pooling
 
 
 
-	private void SpawnObject(GameObject prefabToSpawn, Vector3 position)
+	private void SpawnObject(GameObject prefabToSpawn, Vector3 position, Transform parent)
 	{
 		if (!prefabToSpawn)
 		{
@@ -43,7 +43,5 @@ public class ObjectSpawner : MonoBehaviour //TODO: Implement object pooling
 
 		GameObject newGameObject = GameObject.Instantiate(prefabToSpawn, _objectContainer.transform);
 		newGameObject.transform.position = position;
-
-
 	}
 }
