@@ -28,6 +28,7 @@ public class PreviewObject : MonoBehaviour
 		}
 	}
 	public Vector3 LocationToShow { get => _locationToShow; set => _locationToShow = value; }
+	public GameObject Prefab { get => _prefab; }
 
 
 	private void Awake()
@@ -56,8 +57,6 @@ public class PreviewObject : MonoBehaviour
 		_previewObject.SetActive(false);
 
         SetupPreviewObjectRender(previewObjectMeshFilter, previewObjectMeshRenderer);
-
-		_previewObject.SetActive(true);
 	}
 
     private void SetupPreviewObjectRender(MeshFilter meshFilter, MeshRenderer meshRenderer)
