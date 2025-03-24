@@ -42,6 +42,7 @@ public class ObjectSpawner : MonoBehaviour //TODO: Implement object pooling
 		}
 
 		GameObject newGameObject = GameObject.Instantiate(prefabToSpawn, _objectContainer.transform);
+		newGameObject.transform.SetParent(parent);
 		newGameObject.transform.position = position;
 	}
 }

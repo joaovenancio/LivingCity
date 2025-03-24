@@ -8,6 +8,7 @@ public class ObjectSpawnButton : MonoBehaviour
     [SerializeField] private InputEvents _inputEvents;
 	[SerializeField] private PreviewObject _previewObject;
 	[SerializeField] private ScreenRaycast _screenRaycaster;
+	[SerializeField] private Transform _spawnedObjectsHolder;
 
 	private bool _isBeingDragged = false;
 
@@ -71,7 +72,9 @@ public class ObjectSpawnButton : MonoBehaviour
 		if (rayResult.HitType.Equals(HitType.Nothing)) return;
 		if (!rayResult.Collider.tag.Equals("Ground")) return;
 
-		EventsManager.Instance.SpawnEvents.OnSpawnObject.Invoke(_previewObject.Prefab, worldPoint, rayResult.Collider.transform);
+		Debug.Log(rayResult.Collider.gameObject);
+
+		EventsManager.Instance.SpawnEvents.OnSpawnObject.Invoke(_previewObject.Prefab, worldPoint, _spawnedObjectsHolder);
 	}
 	#endregion
 }
