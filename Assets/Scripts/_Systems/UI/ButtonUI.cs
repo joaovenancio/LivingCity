@@ -69,6 +69,7 @@ public class ButtonUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 	{
 		if (!IsInteractable) return;
 		if (!_isPointerOver) return;
+		//Debug.Log("ButtonUI: OnPointerDragStart");
 
 		_onDragStart.Invoke();
 	}
@@ -77,6 +78,7 @@ public class ButtonUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 	{
 		if (!IsInteractable) return;
 		if (!_isPointerOver) return;
+		//Debug.Log("ButtonUI: OnPointerDragEnd");
 
 		_onDragEnd.Invoke();
 	}
