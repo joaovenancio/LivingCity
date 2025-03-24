@@ -13,11 +13,11 @@ Before you begin, make sure you have the following items installed on your syste
 
 1. Clone the Repository.
 
-If you have Git installed, open the terminal or command prompt and run the following command to clone the repository:
+- If you have Git installed, open the terminal or command prompt and run the following command to clone the repository:
 
-https://github.com/joaovenancio/LivingCity.git
+- - git clone https://github.com/joaovenancio/LivingCity.git
 
- Alternatively, you can download the repository as a ZIP file directly from GitHub and extract it on your computer.
+- Alternatively, you can download the repository as a ZIP file directly from GitHub and extract it on your computer.
 
 2. Open the Project in Unity Hub
 - Open Unity Hub.
@@ -40,6 +40,13 @@ https://github.com/joaovenancio/LivingCity.git
 
 
 If you encounter any issues or have questions, feel free to contact me.
+
+## Controls
+
+- Drag outside the world:
+- Hover over Objects Text:
+- Drag and drop object:
+- Click on objects:
 
 ## Copyright
 
