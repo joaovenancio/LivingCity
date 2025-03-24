@@ -36,6 +36,7 @@ public class GetHit : MonoBehaviour, IRaycastable
 		if (HitPoints <= 0)
 		{
 			_rigidBody.useGravity = true;
+			_rigidBody.isKinematic = false;
 			_rigidBody.AddForce(Camera.main.transform.forward * _impulseForce, ForceMode.Impulse);
 			_impactAudioSource?.Play();
 		}
