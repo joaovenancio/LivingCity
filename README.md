@@ -34,6 +34,7 @@ Alternatively, you can download the repository as a ZIP file directly from GitHu
 
 #### 4. Run the Project
 
+- **Go to the main scene, located at \Assets\Scenes\Main**.
 - In Unity Editor, click the Play button at the top of the window to run the project.
 - The project should start, and you can interact with it as designed.
 
