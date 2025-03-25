@@ -1,7 +1,7 @@
 # LivingCity
  Unity Project
 
-## How to Download and Run the Project
+## How to Download and Run the Project:
 ### Prerequisites:
 
 Before you begin, make sure you have the following items installed on your system:
@@ -24,7 +24,7 @@ Alternatively, you can download the repository as a ZIP file directly from GitHu
 - Open Unity Hub.
 - Click the Add button.
 - Navigate to the folder where you cloned or extracted the repository and select the project folder.
-- Make sure the selected Unity Editor version is 6000.0.42f1 (or the specific version used in the project).
+- Make sure the selected Unity Editor version is 6000.0.42f1.
 
 
 #### 3. Open the Project in Unity Editor
@@ -32,28 +32,34 @@ Alternatively, you can download the repository as a ZIP file directly from GitHu
 - In Unity Hub, click on the project you just added to open it in Unity Editor.
 
 
-#### 4. Configure the Project (if necessary)
-
-- Depending on the project, you may need to configure some dependencies or adjust some settings. Refer to the project documentation or additional instructions in the README.md for more details.
-
-
-#### 5. Run the Project
+#### 4. Run the Project
 
 - In Unity Editor, click the Play button at the top of the window to run the project.
 - The project should start, and you can interact with it as designed.
 
-If you encounter any issues or have questions, feel free to contact me.
+
+#### If you encounter any issues or have questions, feel free to contact me.
+
+
+## How to Run the Build (Windows only):
+
+- Download the latest release.
+- Extract its contents;
+- Run (double click on) "LivingCity.exe";
+- Use Alt+F4 to close the game.
 
 ## Controls
 
-### The controls are mouse based:
+### The controls are mouse-based:
 
 - Left Mouse Button: 
     - Simple click;
     - Drag and release.
-- Mouse movement
+- Mouse movement.
 
-### Interactions:
+## Interactions:
+
+Quick video on interactions: https://drive.google.com/file/d/1HyJAjLrgDCieQpKacldvefeGnXfO-ju5/view?usp=sharing
 
 - **Drag outside the world and move the mouse:** Move the camera around the world (big square city);
 - **Hover over "Objects" Text:** Shows a panel of the different objects that you can spawn into the world;
